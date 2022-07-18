@@ -8,14 +8,14 @@ default: &default
 
 development:
   <<: *default
-  database: checkplants_development
+  database: checkplant_test_development
 
 test:
   <<: *default
-  database: checkplants_test
+  database: checkplant_test_test
 
 production:
   <<: *default
-  database: checkplants_production
-  username: checkplants
-  password: <%= ENV["CHECKPLANTS_DATABASE_PASSWORD"] %>
+  database: checkplant_test_production
+  username: checkplant_test
+  password: <%= ENV["CHECKPLANT_TEST_DATABASE_PASSWORD"] %>
