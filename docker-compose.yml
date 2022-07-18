@@ -16,7 +16,7 @@ services:
     environment:
       - DB_PASSWORD=postgres
     volumes:
-      - .:/checkplants
+      - .:/checkplant-test
       - gems:/gems
     depends_on:
       - db
