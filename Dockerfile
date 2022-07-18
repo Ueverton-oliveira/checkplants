@@ -13,7 +13,7 @@ nodejs yarn build-essential libpq-dev imagemagick git-all nano
 RUN gem install bundler
 
 # Seta nosso path
-ENV INSTALL_PATH /checkplant-test
+ENV INSTALL_PATH /nomeprojeto
 
 # Cria nosso diretório
 RUN mkdir -p $INSTALL_PATH
