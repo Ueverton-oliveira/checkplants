@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Rating, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to belong_to :store }
+  it { is_expected.to validate_presence_of(:value) }
+  it { is_expected.to validate_presence_of(:opinion) }
+  it { is_expected.to validate_presence_of(:user_name) }
 end
