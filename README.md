@@ -1,24 +1,77 @@
 # README
+💻 **Stack**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Ruby 3.1.1
 
-Things you may want to cover:
+- Rails 7.0.3.1
 
-* Ruby version
+- Host machine dependencies
+  - [Docker (CE)](https://docs.docker.com/engine/installation/)
+  - [Docker Compose](https://docs.docker.com/compose/install/)
 
-* System dependencies
+🚀 **To start the Rails app, run:**
 
-* Configuration
+- ⚠️ Is it your first time? ⚠️
 
-* Database creation
+  - Create a external volume to share gems across containers:
+      ```bash
+        docker-compose build
+      ```
+    Note: If your docker commands only work using sudo before, run the following command in the console to fix it:
+    - ```bash
+        sudo groupadd docker
+      ``` 
+    - ```bash
+        sudo usermod -aG docker $USER
+      ``` 
+    - ```bash
+        sudo service docker restart
+      ```
+  - Load all needed gems into `gems` external volume:
+    ```bash
+      docker-compose run --rm app bundle install
+    ```
+  - Install the webpack:
+    ```bash
+      docker-compose run --rm app bundle exec rails webpacker:install
+    ```
 
-* Database initialization
 
-* How to run the test suite
+- Starting all stack (_add `-d` flag to run in background_):
 
-* Services (job queues, cache servers, search engines, etc.)
+  - Follow the `Starting all stack` section
+  ```bash
+    docker-compose up
+  ```
+🛠 **Useful commands:**
 
-* Deployment instructions
+- Start Rails console:
+  ```bash
+    docker-compose run --rm app bundle exec rails c
+  ```
+- Execute create DB:
+  ```bash
+      docker-compose run --rm app bundle exec rails db:create
+    ```
+- Execute migration:
+  ```bash
+    docker-compose run --rm app bundle exec rails db:migrate
+  ```
+  
+ - Execute population database:
+  ```bash
+    docker-compose run --rm app bundle exec rails db:seed
+  ```
+- Access database console:
+  ```bash
+      docker-compose run --rm app bundle exec rails dbconsole
+    ```
+- Test a specific file
 
-* ...
+  ```bash
+    docker-compose run --rm app bundle exec rspec spec
+   
+
+  ```
+
+
