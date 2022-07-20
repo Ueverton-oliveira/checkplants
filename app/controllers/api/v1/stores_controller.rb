@@ -9,7 +9,21 @@ class Api::V1::StoresController < ApplicationController
                    .reverse
   end
 
-  def show
+  def show; end
+
+  def update
+    @store.attributes = ratings_params
+
+    @store.save!
+    render :show
+  rescue
+    render json: @store.errors.messages
+  end
+
+  def destroy
+    @store.destroy!
+  rescue
+    render json: @store.errors, status: :unprocessable_entity
   end
 
   private

@@ -8,6 +8,24 @@ class Api::V1::RatingsController < ApplicationController
     end
   end
 
+  def show; end
+
+  def update
+    @rating.attributes = ratings_params
+
+    @rating.save!
+    render :show
+  rescue
+    render json: @rating.errors.messages
+  end
+
+  def destroy
+    @rating.destroy!
+  rescue
+    render json: @rating.errors, status: :unprocessable_entity
+  end
+
+
   private
 
   def create_rating

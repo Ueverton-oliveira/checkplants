@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "Api::V1::Products", type: :request do
   describe "GET /products" do
     let(:url) { "/api/v1/products" }
-    let!(:products) { create(:products) }
+    let!(:products) { create(:product) }
 
-    it "returns all Banks" do
+    it "returns all Products" do
       get url
       expect(body_json['products']).not_to be_empty
     end
@@ -33,7 +33,7 @@ RSpec.describe "Api::V1::Products", type: :request do
     end
   end
 
-  describe "DELETE /banks" do
+  describe "DELETE /products" do
     let(:url) { "/api/v1/products/#{product.id}" }
     let!(:product) { create(:product) }
 
