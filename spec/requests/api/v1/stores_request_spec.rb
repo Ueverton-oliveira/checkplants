@@ -18,13 +18,13 @@ RSpec.describe "Api::V1::Stores", type: :request do
 
   describe "POST /api/v1/stores" do
     # valid store
-    let(:valid_params) { { lonlat: '2112204 5649415', description: 'Store Miojo' } }
+    let(:valid_params) { { lonlat: "POINT(#{-49.451053} #{-25.439841})", description: 'Store Miojo' } }
 
     context 'when the request is valid' do
       before { post '/api/v1/stores', params: valid_params }
 
       it 'create a store' do
-        expect(body_json['store']['lonlat']).to eq('2112204 5649415')
+        expect(body_json['store']['lonlat']).to eq("POINT(#{-49.451053} #{-25.439841})")
         expect(body_json['store']['name']).to eq('Store Miojo')
       end
 
