@@ -29,6 +29,6 @@ class Api::V1::StoresController < ApplicationController
   private
 
   def set_store
-    @store = Store.find_by!(google_place_id: params[:id])
+    @store = Store.find_by!(params[:id])
   end
 end
