@@ -2,9 +2,9 @@ default: &default
   adapter: postgis
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: db
-  user: postgres
+  username: postgres
   password: <%= ENV['DB_PASSWORD'] %>
+  host: db
 
 development:
   <<: *default

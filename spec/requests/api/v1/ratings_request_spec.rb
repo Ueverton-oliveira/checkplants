@@ -5,7 +5,7 @@ RSpec.describe "Api::V1::Ratings", type: :request do
     let(:url) { "/api/v1/ratings" }
     let!(:ratings) { create(:rating) }
 
-    it "returns all Banks" do
+    it "returns all Ratings" do
       get url
       expect(body_json['ratings']).not_to be_empty
     end
@@ -17,14 +17,14 @@ RSpec.describe "Api::V1::Ratings", type: :request do
   end
 
   describe "POST /api/v1/ratings" do
-    # valid bank
+    # valid rating
     let!(:store) { create(:store) }
     let(:valid_params) { { store_id: :store, value: 5, opinion: 'Muito bom!', name: 'Ueverton Oliveira' } }
 
     context 'when the request is valid' do
       before { post '/api/v1/ratings', params: valid_params }
 
-      it 'create a bank' do
+      it 'create a rating' do
         expect(body_json['rating']['value']).to eq(5)
         expect(body_json['rating']['opinion']).to eq('Muito bom!')
         expect(body_json['rating']['user_name']).to eq('Ueverton Oliveira')

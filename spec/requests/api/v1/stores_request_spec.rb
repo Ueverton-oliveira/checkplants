@@ -5,7 +5,7 @@ RSpec.describe "Api::V1::Stores", type: :request do
     let(:url) { "/api/v1/stores" }
     let!(:stores) { create(:store) }
 
-    it "returns all Banks" do
+    it "returns all Stores" do
       get url
       expect(body_json['stores']).not_to be_empty
     end
